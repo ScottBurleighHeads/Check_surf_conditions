@@ -31,24 +31,13 @@ class Profile():
             name_str = data_file.readline()
             name_listy = name_str.split(" ")
             return name_listy
-
-        with open('profile.txt', 'r') as data_file:
-            line_1 = convert(data_file)
-            self.first_name = line_1[3]
-            self.last_name = line_1[-2]
-            self.DOB = convert(data_file)[-2]
-            self.city = data_file.readline()[8:-1]
-        return f"Name: {self.first_name} {self.last_name} D.O.B: {self.DOB} City: {self.city}"
-
-# new_profile = Profile(None,None,None,None)
-# new_profile.set_up_profile()
-# new_profile.save_profile()
-   
-            
-
-
-
-# scott = Profile('Scott','Malone', '24/08/1987', 'New York')
-# scott.save_details()
-# scott.get_details()
-# print(scott.__dict__)
+        try:
+            with open('profile.txt', 'r') as data_file:
+                line_1 = convert(data_file)
+                self.first_name = line_1[3]
+                self.last_name = line_1[-2]
+                self.DOB = convert(data_file)[-2]
+                self.city = data_file.readline()[8:-1]
+            return f"Name: {self.first_name} {self.last_name}, D.O.B: {self.DOB}, City: {self.city}"
+        except IndexError:
+            return ""
