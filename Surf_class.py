@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-class Surf():
+class Surf:
     url = 'http://api.worldweatheronline.com/premium/v1/marine.ashx?key=e76a15e1269541aab92105556202109&format=xml&q=-28.0291,153.431381'
     response = requests.get(url)
     soup = BeautifulSoup(response.text,"html.parser")
@@ -29,39 +29,20 @@ class Surf():
         time_holder = 7
     
     def __init__(self):
-        self.wind_speed = None
-        self.wind_direction = None
-        self.surf_size = None
-        self.date = None
-        self.water_temp = None
-        self.swell_direction = None
-   
-    def get_wind_speed(self):
         self.wind_speed = Surf.soup.find_all("windspeedkmph")[Surf.time_holder].text
-    
-    def get_wind_direction(self):
         self.wind_direction = Surf.soup.find_all("winddir16point")[Surf.time_holder].text
-
-    def get_water_temp(self):
-        self.water_temp = Surf.soup.find_all("watertemp_c")[Surf.time_holder].text
-    
-    def get_swell_direction(self):
-        self.swell_direction = Surf.soup.find_all("swelldir16point")[2].text.strip()
-    
-    def get_surf_size(self):
         self.surf_size = Surf.soup.find_all("swellheight_m")[Surf.time_holder].text
+        self.water_temp = Surf.soup.find_all("watertemp_c")[Surf.time_holder].text
+        self.swell_direction = Surf.soup.find_all("swelldir16point")[2].text.strip()
+        self.word_surf = ""
+        
+    @property
+    def surf_str_entry(self):
+        if float(self.surf_size) < 1.3 and "w" in self.wind_direction:
+            self.word_surf = "pretty small but offshore winds so probably worth a surf."
+        elif float(self.surf_size) < 1.3:
+            self.word_surf = "pretty small"
+        
+        return self.word_surf
 
-# scott = Surf()
-# scott.get_wind_speed()
-# scott.get_wind_direction()
-# scott.get_water_temp()
-# scott.get_swell_direction()
-# scott.get_surf_size()
-
-# print(scott.wind_speed)
-# print(scott.wind_direction)
-# print(scott.water_temp)
-# print(scott.swell_direction)
-# print(scott.surf_size)
-
-
+# print(Surf().str_entry)

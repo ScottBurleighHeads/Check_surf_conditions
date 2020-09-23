@@ -1,4 +1,5 @@
 from Profile_class import Profile
+from Surf_class import Surf
 
 user = Profile()
 username = user.get_profile()
@@ -8,6 +9,8 @@ if username == "":
     new_user.set_up_profile()
     new_user.save_profile()
 
-print(user.first_name)
+print(f""" Hey {user.first_name}. The surf is {Surf().surf_str_entry}""")
+
+
 
 
