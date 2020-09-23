@@ -9,7 +9,7 @@ class Surf():
     time = datetime.now()
 
     #The time_holder is an input that gives updates to weather outputs depending 
-    #on the time of the day.
+    #on the time of the day. time.hour returns the hour of the day.
     time_holder = 0
     if time.hour < 2:
         time_holder = 0 
@@ -51,24 +51,17 @@ class Surf():
     def get_surf_size(self):
         self.surf_size = Surf.soup.find_all("swellheight_m")[Surf.time_holder].text
 
-scott = Surf()
-scott.get_wind_speed()
-scott.get_wind_direction()
-scott.get_water_temp()
-scott.get_swell_direction()
-scott.get_surf_size()
+# scott = Surf()
+# scott.get_wind_speed()
+# scott.get_wind_direction()
+# scott.get_water_temp()
+# scott.get_swell_direction()
+# scott.get_surf_size()
 
-print(scott.wind_speed)
-print(scott.wind_direction)
-print(scott.water_temp)
-print(scott.swell_direction)
-print(scott.surf_size)
+# print(scott.wind_speed)
+# print(scott.wind_direction)
+# print(scott.water_temp)
+# print(scott.swell_direction)
+# print(scott.surf_size)
 
-
-
-
-# print(soup.find('sunrise').text)
-# print(soup.find("windspeedkmph").text)
-# print(soup.find("date").text)
-# print(soup.find("winddir16point").text)
 
