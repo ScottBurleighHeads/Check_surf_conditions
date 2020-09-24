@@ -27,6 +27,8 @@ while True:
         if selection == 1:
             print(f"""Hey {user.first_name}. The surf is {surf.surf_str_entry}
             """)
+            if float(surf.surf_size) < 1.3:
+                print(surf.paddleBoard_str_entry)
         elif selection == 2:
             
             confirm = input("Do you want to change your profile? write yes or no. ")
@@ -39,6 +41,7 @@ while True:
             break
         else:
             print("Enter a number 1,2 or 3 only.")
+        input()
     except ValueError:
         print("Invalid input you may have entered a letter instead of a value between " 
               "1 - 3. Please try again or press 3 to quit.\n") 

@@ -39,6 +39,7 @@ class Surf():
         self.water_temp = soup.find_all("watertemp_c")[Surf.time_holder].text
         self.swell_direction = soup.find_all("swelldir16point")[2].text.strip()
         self.word_surf = ""
+        self.word_paddle = ""
         
     
     
@@ -54,6 +55,17 @@ class Surf():
         else:
             self.word_surf = "decent swell but onshore."
         return self.word_surf
+
+    @property 
+    def paddleBoard_str_entry(self):
+        if float(self.wind_speed) < 20 and float(self.water_temp) > 20:
+            self.word_paddle = f"The wind is only {self.wind_speed}km/h and the water temp is a nice {self.water_temp}. Go for a paddle board."
+        elif float(self.wind_speed) < 20 and float(self.water_temp) < 20:
+            self.word_paddle = f"The wind is only {self.wind_speed}km/h but the water temp is a chilly {self.water_temp}. Chuck a wetty on and go for a paddle board."
+        elif float(self.wind_speed) > 20:
+            self.word_paddle = f"Its a bit windy to go paddle boarding. The wind is {self.wind_speed}"
+        return self.word_paddle
+
 
 
 
