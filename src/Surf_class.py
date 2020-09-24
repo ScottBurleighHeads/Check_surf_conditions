@@ -29,20 +29,22 @@ class Surf():
         time_holder = 7
     
     def __init__(self,coordinates):
-        url = f'http://api.worldweatheronline.com/premium/v1/marine.ashx?key=e76a15e1269541aab92105556202109&format=xml&q={coordinates}'
+        """ This method initiallises all method att"""
+        url = f'http://api.worldweatheronline.com/premium/v1/marine.ashx?key=e76a15e1269541aab92105556202109&format=xml&q={coordinates}&tides=yes'
         response = requests.get(url)
-        self.soup = BeautifulSoup(response.text,"html.parser")
-        self.wind_speed = self.soup.find_all("windspeedkmph")[Surf.time_holder].text
-        self.wind_direction = self.soup.find_all("winddir16point")[Surf.time_holder].text
-        self.surf_size = self.soup.find_all("swellheight_m")[Surf.time_holder].text
-        self.water_temp = self.soup.find_all("watertemp_c")[Surf.time_holder].text
-        self.swell_direction = self.soup.find_all("swelldir16point")[2].text.strip()
+        soup = BeautifulSoup(response.text,"html.parser")
+        self.wind_speed = soup.find_all("windspeedkmph")[Surf.time_holder].text
+        self.wind_direction = soup.find_all("winddir16point")[Surf.time_holder].text
+        self.surf_size = soup.find_all("swellheight_m")[Surf.time_holder].text
+        self.water_temp = soup.find_all("watertemp_c")[Surf.time_holder].text
+        self.swell_direction = soup.find_all("swelldir16point")[2].text.strip()
         self.word_surf = ""
         
     
     
     @property
     def surf_str_entry(self):
+        """ This method is used as an AI feature that interacts with the user depending on the results it gets back from the api"""
         if float(self.surf_size) < 1.3 and "w" in self.wind_direction.lower():
             self.word_surf = f"pretty small with a swell of {self.surf_size}m but offshore winds from the {self.wind_direction} so probably worth a surf."
         elif float(self.surf_size) < 1.3:
@@ -50,7 +52,7 @@ class Surf():
         elif float(self.surf_size) > 1.3 and "w" in self.wind_direction:
             self.word_surf = f"decent swell and offshore winds from the {self.wind_direction}.. Get out there now"
         else:
-            self.word_surf = "decent swell and onshore."
+            self.word_surf = "decent swell but onshore."
         return self.word_surf
 
 
