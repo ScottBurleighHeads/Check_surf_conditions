@@ -1,22 +1,9 @@
-import requests
-from datetime import datetime
-from bs4 import BeautifulSoup
+from geopy.geocoders import Nominatim
 
-url = 'http://api.worldweatheronline.com/premium/v1/marine.ashx?key=e76a15e1269541aab92105556202109&format=xml&q=-28.0291,153.431381'
-response = requests.get(url)
-soup = BeautifulSoup(response.text,"html.parser")
+geolocator = Nominatim(user_agent="Profile")
+location = geolocator.geocode("123 Broadbeach gold coast")
+print(location.address)
+#Flatiron Building, 175, 5th Avenue, Flatiron, New York, NYC, New York, ...
+print((location.latitude, location.longitude))
+#(40.7410861, -73.9896297241625)
 
-print(soup.find_all("swelldir16point")[2].text.strip())
-# wind = soup.find('hourly')
-# for num,item in enumerate(wind):
-#     print(item)
-#     if "watertemp_c" in str(item):
-#         print("yay")
-#         holder = item
-#         break
-
-# print(holder.text)
-    
-
-# # if "waterTemp_C" in  "<watertemp_c>21</watertemp_c>":
-# #     print("yay")
