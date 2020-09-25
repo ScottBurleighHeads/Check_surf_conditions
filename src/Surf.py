@@ -2,9 +2,6 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-
-# -28.0291,153.431381
-# print({Profile().latitude},{Profile().longitude})
 class Surf():
     
     #The time_holder is an input that gives updates to weather outputs depending 
@@ -54,7 +51,7 @@ class Surf():
         elif float(self.surf_size) > 1.3 and "w" in self.wind_direction.lower():
             self.word_surf = f"decent swell of {self.surf_size}m and offshore winds from the {self.wind_direction}. Get out there now"
         else:
-            self.word_surf = "decent swell but onshore."
+            self.word_surf = f"a decent swell of {self.surf_size}m from the {self.swell_direction} but onshore."
         return self.word_surf
 
     @property 
