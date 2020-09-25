@@ -1,4 +1,4 @@
 Name  : Scott Malone 
 D.O.B : 24/08/1987 
-City  : Sunshine Coast, Maroochydore, Queensland, Australia 
-City coordinates: -26.5443222,153.0507705
+City  : Sydney, New South Wales, Australia 
+City coordinates: -33.8548157,151.2164539

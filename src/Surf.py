@@ -45,13 +45,14 @@ class Surf():
     
     @property
     def surf_str_entry(self):
-        """ This method is used as an AI feature that interacts with the user depending on the results it gets back from the api"""
+        """ This method is used as an AI feature that interacts with the user depending 
+            on the results it gets back from the api"""
         if float(self.surf_size) < 1.3 and "w" in self.wind_direction.lower():
             self.word_surf = f"pretty small with a swell of {self.surf_size}m but offshore winds from the {self.wind_direction} so probably worth a surf."
         elif float(self.surf_size) < 1.3:
             self.word_surf = f"pretty small with a swell of {self.surf_size}m and onshore winds from the {self.wind_direction}. Better off going to the gym."
-        elif float(self.surf_size) > 1.3 and "w" in self.wind_direction:
-            self.word_surf = f"decent swell and offshore winds from the {self.wind_direction}.. Get out there now"
+        elif float(self.surf_size) > 1.3 and "w" in self.wind_direction.lower():
+            self.word_surf = f"decent swell of {self.surf_size}m and offshore winds from the {self.wind_direction}. Get out there now"
         else:
             self.word_surf = "decent swell but onshore."
         return self.word_surf
@@ -59,10 +60,10 @@ class Surf():
     @property 
     def paddleBoard_str_entry(self):
         if float(self.wind_speed) < 20 and float(self.water_temp) > 20:
-            self.word_paddle = f"The wind is only {self.wind_speed}km/h and the water temp is a nice {self.water_temp}. Go for a paddle board."
+            self.word_paddle = f"The wind is only {self.wind_speed}km/h and the water temp is a nice {self.water_temp}C. Go for a paddle board."
         elif float(self.wind_speed) < 20 and float(self.water_temp) < 20:
-            self.word_paddle = f"The wind is only {self.wind_speed}km/h but the water temp is a chilly {self.water_temp}. Chuck a wetty on and go for a paddle board."
-        elif float(self.wind_speed) > 20:
+            self.word_paddle = f"The wind is only {self.wind_speed}km/h but the water temp is a chilly {self.water_temp}C. Chuck a wetty on and go for a paddle board."
+        elif float(self.wind_speed) >= 20:
             self.word_paddle = f"Its a bit windy to go paddle boarding. The wind is {self.wind_speed}"
         return self.word_paddle
 

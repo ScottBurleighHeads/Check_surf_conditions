@@ -1,15 +1,15 @@
-from Profile_class import Profile
-from Surf_class import Surf
+from Profile import Profile
+from Surf import Surf
 
 user = Profile()
 
-username = user.get_profile()
+username = user.get_profile
 
 if username == "":
     print("Welcome new user. Enter your details to set up your profile.")
-    new_user = Profile()
-    new_user.set_up_profile()
-    new_user.save_profile()
+    user.set_up_profile_name_DOB
+    user.set_up_profile_address
+    user.save_profile
 
 print(f"Hey {user.first_name}")
 
@@ -34,13 +34,15 @@ while True:
             confirm = input("Do you want to change your profile? write yes or no. ")
             confirm = confirm.lower()
             if confirm == 'yes':
-                user.set_up_profile()
-                user.save_profile()
+                user.set_up_profile_name_DOB
+                user.set_up_profile_address
+                user.save_profile
 
         elif selection == 3:
             break
         else:
             print("Enter a number 1,2 or 3 only.")
+        print("Press enter to return the main menu.")
         input()
     except ValueError:
         print("Invalid input you may have entered a letter instead of a value between " 

@@ -1,4 +1,5 @@
 from geopy.geocoders import Nominatim
+import unittest
 
 class Profile():
     def __init__(self):
@@ -7,10 +8,9 @@ class Profile():
         self.DOB = ""
         self.city = ""
         self.coordinates = ""
-    
-    def set_up_profile(self):
-        """This method is used only initially while a user use's the program for the first time.
-        In the main there is a control to check if profile.txt is empty"""
+    @property
+    def set_up_profile_name_DOB(self):
+       
         name = input("Enter your first and last name: ")
         name_list = name.split(" ")
        
@@ -20,10 +20,21 @@ class Profile():
         else:
             self.first_name = name
             self.last_name = ""
-        
-        self.DOB = input("Enter your D.O.B in the format xx/xx/xxxx: ")
-        solution = 0
        
+        while True:
+            self.DOB = input("Enter your D.O.B in the format xx/xx/xxxx: ")
+            if len(self.DOB) == 10 and self.DOB[2] == "/" and self.DOB[5] =="/":
+                if self.DOB[:2].isnumeric() and self.DOB[3:5].isnumeric() and self.DOB[6:].isnumeric():
+                    break
+                else:
+                    print("ERROR: Only enter the format xx/xx/xxxx where x is a number only")
+            else:
+                print("Please only use the format xx/xx/xxxx. Only use numbers for the x.")             
+    
+    @property
+    def set_up_profile_address(self):
+
+        solution = 0
         while solution != 'yes' or solution == '1': 
             self.city = input("Enter your address: ")
             print("\n")
@@ -39,7 +50,7 @@ class Profile():
             else:
                 print("There may have been an input error. Try again or use the next suburb." 
                       "The program only needs a suburb or city where you live.")
-           
+    @property       
     def save_profile(self):
         """This method is used to store data in profile.txt for the user. Initially the user will
         have to enter his details but the next time the person logs in their data 
@@ -49,7 +60,7 @@ class Profile():
                             f"D.O.B : {self.DOB} \n"
                             f"City  : {self.city} \n"
                             f"City coordinates: {self.coordinates}")
-                            
+    @property                        
     def get_profile(self):  
         """This method is used to retrieve the users details when executing the program. 
         The user will not have to log in again."""
@@ -69,5 +80,5 @@ class Profile():
         except IndexError:
             return ""
 
-
-
+scott = Profile()
+scott.set_up_profile_name_DOB
