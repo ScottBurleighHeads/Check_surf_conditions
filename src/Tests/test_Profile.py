@@ -1,66 +1,71 @@
 # python -m unittest discover -s Tests -v
 import unittest
+from unittest.mock import patch
 from Profile import Profile
 
 class Test_Profile(unittest.TestCase):
-    test = Profile()
-    test.set_up_profile_name_DOB
-    test.set_up_profile_address
-    test.save_profile
+    
+    def setUp(self):
+        with patch("builtins.input") as input: 
+            input.side_effect = ["scott malone","23/32/2332","sydney","yes"]
+            self.test = Profile()
+            self.test.set_up_profile_name_DOB
+            self.test.set_up_profile_address
+            self.test.save_profile
     #Testing names need to be the same as the test inputs.
     def test_set_up_profile_name_DOB(self):
         
-        self.assertEqual(Test_Profile.test.first_name != "", True)
-        self.assertEqual(Test_Profile.test.last_name != "", True)
-        self.assertEqual(Test_Profile.test.DOB != "", True)
+        self.assertEqual(self.test.first_name != "", True)
+        self.assertEqual(self.test.last_name != "", True)
+        self.assertEqual(self.test.DOB != "", True)
 
-        Test_Profile.test.first_name = "Fred"
-        Test_Profile.test.last_name = "Blogs"
-        Test_Profile.test.DOB = "12/23/3456"
+        self.test.first_name = "Fred"
+        self.test.last_name = "Blogs"
+        self.test.DOB = "12/23/3456"
 
-        self.assertEqual(Test_Profile.test.first_name,'Fred')
-        self.assertEqual(Test_Profile.test.last_name,'Blogs')
-        self.assertEqual(Test_Profile.test.DOB,"12/23/3456")
+        self.assertEqual(self.test.first_name,'Fred')
+        self.assertEqual(self.test.last_name,'Blogs')
+        self.assertEqual(self.test.DOB,"12/23/3456")
     
     def test_set_up_profile_address(self):
         
-        self.assertEqual(Test_Profile.test.city != "", True)
-        self.assertEqual(Test_Profile.test.coordinates != "", True)
+        self.assertEqual(self.test.city != "", True)
+        self.assertEqual(self.test.coordinates != "", True)
 
     def test_save_profile(self):
         
         with open('profile.txt', 'r') as data_file:
                 txt = data_file.read()
-        self.assertEqual(txt,f"Name  : {Test_Profile.test.first_name} {Test_Profile.test.last_name}\n"
-                             f"D.O.B : {Test_Profile.test.DOB}\n"
-                             f"City  : {Test_Profile.test.city}\n"
-                             f"City coordinates: {Test_Profile.test.coordinates}")
+        self.assertEqual(txt,f"Name  : {self.test.first_name} {self.test.last_name}\n"
+                             f"D.O.B : {self.test.DOB}\n"
+                             f"City  : {self.test.city}\n"
+                             f"City coordinates: {self.test.coordinates}")
         
     def test_get_profile(self):
         
         # Storing current values to test against 
-        first = Test_Profile.test.first_name
-        last = Test_Profile.test.last_name
-        birth = Test_Profile.test.DOB
-        address = Test_Profile.test.city
-        coords = Test_Profile.test.coordinates
+        first = self.test.first_name
+        last = self.test.last_name
+        birth = self.test.DOB
+        address = self.test.city
+        coords = self.test.coordinates
         
         # Deleting current values 
-        Test_Profile.test.first_name = None
-        Test_Profile.test.last_name = None
-        Test_Profile.test.DOB = None
-        Test_Profile.test.city = None
-        Test_Profile.test.coordinates = None
+        self.test.first_name = None
+        self.test.last_name = None
+        self.test.DOB = None
+        self.test.city = None
+        self.test.coordinates = None
         
         # Calling the function get_profile to retrieve the values 
         # from a text file.
-        Test_Profile.test.get_profile.replace(" ","").replace("\n","")
+        self.test.get_profile.replace(" ","").replace("\n","")
         
         # Testing the values are correct
-        self.assertEqual(Test_Profile.test.first_name,first)
-        self.assertEqual(Test_Profile.test.last_name,last)
-        self.assertEqual(Test_Profile.test.DOB,birth)
-        self.assertEqual(Test_Profile.test.city,address)
-        self.assertEqual(Test_Profile.test.coordinates,coords)
+        self.assertEqual(self.test.first_name,first)
+        self.assertEqual(self.test.last_name,last)
+        self.assertEqual(self.test.DOB,birth)
+        self.assertEqual(self.test.city,address)
+        self.assertEqual(self.test.coordinates,coords)
 
 
