@@ -1,5 +1,4 @@
 from geopy.geocoders import Nominatim
-import unittest
 
 class Profile():
     def __init__(self):

@@ -42,6 +42,7 @@ while True:
             break
         else:
             print("Enter a number 1,2 or 3 only.")
+            
         print("Press enter to return the main menu.")
         input()
     except ValueError:
