@@ -41,7 +41,7 @@ while True:
         elif selection == 3:
             break
         else:
-            print("Enter a number 1,2 or 3 only.")
+            print("Enter a number 1,2 or 3 only. ")
             
         print("Press enter to return the main menu.")
         input()
