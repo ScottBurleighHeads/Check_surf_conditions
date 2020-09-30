@@ -21,7 +21,11 @@ jobs:
       - name: change directory
         run: cd src
       - name: Run Tests
+<<<<<<< HEAD
         run: |
           python -m unittest discover Tests
+=======
+        run: python3 -m unittest discover Tests
+>>>>>>> 0f7c0535a44b46aef7d02725855f685b3af3ef70
 
 
