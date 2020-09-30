@@ -21,6 +21,9 @@ jobs:
       - name: change directory
         run: |
           cd src
+      - name: print working directory
+        run: | 
+          pwd
       - name: Run Tests
         run: |
           python3 -m unittest discover Tests
