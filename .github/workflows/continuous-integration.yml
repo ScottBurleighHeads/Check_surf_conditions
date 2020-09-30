@@ -25,6 +25,8 @@ jobs:
       - name: change directory
         run: |
           cd src/
+          pwd
+          ls
       - name: print working directory
         run: | 
           pwd
