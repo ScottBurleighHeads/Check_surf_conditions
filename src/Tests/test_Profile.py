@@ -1,7 +1,7 @@
 # python -m unittest discover -s Tests -v
 import unittest
 from unittest.mock import patch
-from Profile import Profile
+from Profile_class import Profile
 
 class Test_Profile(unittest.TestCase):
     

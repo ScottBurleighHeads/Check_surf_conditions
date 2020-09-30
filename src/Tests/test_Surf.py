@@ -1,6 +1,6 @@
 # python -m unittest discover -s Tests -v
 import unittest
-from Surf import Surf
+from Surf_class import Surf
 
 class Test_Surf(unittest.TestCase):
 
