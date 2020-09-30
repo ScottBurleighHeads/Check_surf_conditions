@@ -22,6 +22,6 @@ jobs:
         run: cd src
       - name: Run Tests
         run: |
-          python -m unittest discover src/Tests
+          python -m unittest discover Tests
 
 

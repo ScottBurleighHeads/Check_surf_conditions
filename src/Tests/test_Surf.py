@@ -3,6 +3,7 @@ import unittest
 from Surf import Surf
 
 class Test_Surf(unittest.TestCase):
+
     
     @staticmethod
     def value_input(surf_size,wind_direction,wind_speed,water_temp):
