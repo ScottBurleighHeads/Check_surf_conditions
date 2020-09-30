@@ -21,7 +21,6 @@ jobs:
       - name: change directory
         run: cd src
       - name: Run Tests
-        run: |
-          python -m unittest discover Tests
+        run: python3 -m unittest discover Tests
 
 
