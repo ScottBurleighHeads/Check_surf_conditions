@@ -1,5 +1,5 @@
-from Profile import Profile
-from Surf import Surf
+from Profile_class import Profile
+from Surf_class import Surf
 
 user = Profile()
 

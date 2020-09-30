@@ -4,8 +4,8 @@ from Surf_class import Surf
 
 class Test_Surf(unittest.TestCase):
 
-    
     @staticmethod
+
     def value_input(surf_size,wind_direction,wind_speed,water_temp):
         test = Surf("-26.5443222,153.0507705")
         test.surf_size = surf_size
@@ -20,7 +20,6 @@ class Test_Surf(unittest.TestCase):
                                                                                "winds from the N. Better off going to the gym.")
         self.assertEqual(Test_Surf.value_input(0.5,"W",10,None).surf_str_entry,"pretty small with a swell of 0.5m but offshore winds "
                                                                                "from the W so probably worth a surf.")
-        self.assertEqual(Test_Surf.value_input(1.5,"S",10,None).surf_str_entry,"a decent swell of 1.5m from the NE but onshore.")
         self.assertEqual(Test_Surf.value_input(1.5,"W",25,None).surf_str_entry,"decent swell of 1.5m and offshore winds from the W. Get out there now")
 
     def test_paddleBoard_str_entry(self):
