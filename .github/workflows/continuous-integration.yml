@@ -38,8 +38,7 @@ jobs:
             rm -rf ScottMalone_T2A3
             git clone https://github.com/ScottBurleighHeads/ScottMalone_T2A3.git
             python3.8 -m venv /home/github-actions/ScottMalone_T2A3/env
-            cd ~
-            /home/github-actions/ScottMalone_T2A3/env/bin/pip install -r requirements.txt
+            
         
 
 
