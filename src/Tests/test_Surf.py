@@ -21,6 +21,7 @@ class Test_Surf(unittest.TestCase):
         self.assertEqual(Test_Surf.value_input(0.5,"W",10,None).surf_str_entry,"pretty small with a swell of 0.5m but offshore winds "
                                                                                "from the W so probably worth a surf.")
         self.assertEqual(Test_Surf.value_input(1.5,"W",25,None).surf_str_entry,"decent swell of 1.5m and offshore winds from the W. Get out there now")
+        
 
     def test_paddleBoard_str_entry(self):
         self.assertEqual(Test_Surf.value_input(0.5,"W",10,21).paddleBoard_str_entry,"The wind is only 10km/h and the water temp is a nice 21C. Go for a paddle board.")
