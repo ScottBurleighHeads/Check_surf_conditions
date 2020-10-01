@@ -22,24 +22,24 @@ jobs:
         run: |
           cd src
           python3 -m unittest discover Tests
+  
   deployment:
     needs: test_suite
-    runs-on: ubunutu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Fresh clone & repo install
-        # uses: appleboy/ssh-action@master
-        # with:
-        #   host: 3.214.248.235
-        #   username: github-actions
-        #   key: ${{ secrets.SSH_KEY }}
-        #   port: 22
-        #   script: |
-        #     rm -rf ScottMalone_T2A3
-        #     git clone https://github.com/ScottBurleighHeads/ScottMalone_T2A3.git
-        #     python3.8 -m venv /home/github-actions/ScottMalone_T2A3/env
-        #     /home/github-actions/ScottMalone_T2A3/env/bin/pip install -r requirements.txt
-        run: |
-          pwd
+        uses: appleboy/ssh-action@master
+        with:
+          host: 3.214.248.235
+          username: github-actions
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            rm -rf ScottMalone_T2A3
+            git clone https://github.com/ScottBurleighHeads/ScottMalone_T2A3.git
+            python3.8 -m venv /home/github-actions/ScottMalone_T2A3/env
+            /home/github-actions/ScottMalone_T2A3/env/bin/pip install -r requirements.txt
+        
 
 
 
