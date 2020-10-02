@@ -31,7 +31,7 @@ If there is no swell but water temp is ideal with minimum wind you will get "pre
 
 ![Flowchart](docs/flowchart.JPG)
 
-###Technical information to meet requirements
+### Technical information to meet requirements
 **Initiating the program**
 
 From directoy ScottMalone_T2A3
