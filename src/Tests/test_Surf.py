@@ -28,5 +28,6 @@ class Test_Surf(unittest.TestCase):
         self.assertEqual(Test_Surf.value_input(1.5,"W",10,15).paddleBoard_str_entry,"The wind is only 10km/h but the water temp is a chilly 15C. "
                                                                                     "Chuck a wetty on and go for a paddle board.")
 
+Test_Surf.test_surf_str_entry()
 # if __name__ == "__main__":
 #   unittest.main()             # This feature will allow you to run the command in the terminal without the full command

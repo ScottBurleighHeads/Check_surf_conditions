@@ -23,6 +23,7 @@ while True:
         3) Quit 
         
         selection: """))
+        print("\n")
         surf = Surf(user.coordinates)
         if selection == 1:
             print(f"""Hey {user.first_name}. The surf is {surf.surf_str_entry}
@@ -45,11 +46,6 @@ while True:
         print("Press enter to return the main menu.")
         input()
     except ValueError:
-        print("Invalid input you may have entered a letter instead of a value between " 
+        print("Invalid input you may have entered a letter "
+              "instead of a value between " 
               "1 - 3. Please try again or press 3 to quit.\n") 
-    
-
-
-
-
-

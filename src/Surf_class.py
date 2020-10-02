@@ -3,7 +3,6 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 class Surf():
-    
     #The time_holder is an input that gives updates to weather outputs depending 
     #on the time of the day. time.hour returns the hour of the day.
     time = datetime.now()
@@ -26,8 +25,10 @@ class Surf():
         time_holder = 7
     
     def __init__(self,coordinates):
-        """ This method initiallises all instance variables and store API data directly into the variables
-            Coordinates are longitude and latitude taken from the object stored in main.py when setting up the profile"""
+        """ This method initiallises all instance variables and store API 
+            data directly into the variables Coordinates are longitude and 
+            latitude taken from the object stored in main.py when setting 
+            up the profile"""
         url = f'http://api.worldweatheronline.com/premium/v1/marine.ashx?key=e76a15e1269541aab92105556202109&format=xml&q={coordinates}&tides=yes'
         response = requests.get(url)
         soup = BeautifulSoup(response.text,"html.parser")
@@ -43,8 +44,8 @@ class Surf():
     
     @property
     def surf_str_entry(self):
-        """ This method is used as an AI feature that interacts with the user depending 
-            on the results it gets back from the api"""
+        """ This method is used as an AI feature that interacts 
+            with the user depending on the results it gets back from the api"""
         if float(self.surf_size) < 1.3 and "w" in self.wind_direction.lower():
             self.word_surf = f"pretty small with a swell of {self.surf_size}m but offshore winds from the {self.wind_direction} so probably worth a surf."
         elif float(self.surf_size) < 1.3:
@@ -54,7 +55,7 @@ class Surf():
         else:
             self.word_surf = f"a decent swell of {self.surf_size}m from the {self.swell_direction} but onshore."
         return self.word_surf
-
+    
     @property 
     def paddleBoard_str_entry(self):
         """ This method is used as an AI feature that interacts with the user depending 
