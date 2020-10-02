@@ -20,9 +20,9 @@ while True:
         selection = int(input("""
         1) Check the surf
         2) Settings
-        3) Quit
+        3) Quit 
         
-        """))
+        selection: """))
         surf = Surf(user.coordinates)
         if selection == 1:
             print(f"""Hey {user.first_name}. The surf is {surf.surf_str_entry}
@@ -30,8 +30,8 @@ while True:
             if float(surf.surf_size) < 1.3:
                 print(surf.paddleBoard_str_entry)
         elif selection == 2:
-            
-            confirm = input("Do you want to change your profile? write yes or no. ")
+            confirm = input("Do you want to change your profile? write "
+                            "yes or no. ")
             confirm = confirm.lower()
             if confirm == 'yes':
                 user.set_up_profile_name_DOB
@@ -42,7 +42,6 @@ while True:
             break
         else:
             print("Enter a number 1,2 or 3 only. ")
-            
         print("Press enter to return the main menu.")
         input()
     except ValueError:
