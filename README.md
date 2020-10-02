@@ -48,15 +48,15 @@ There may be data already in ScottMalone_T2A3/src/profile.txt which means the se
 
 **Inputs:**
 
-user name: Scott Pot
-wave height = 0.5
-wind direction = N
-wind speed = 10
-water temp = 21
+    user name: Scott Pot
+    wave height = 0.5
+    wind direction = N
+    wind speed = 10
+    water temp = 21
 
 **Output:**
 
-Hey Scott. The surf is pretty small with a swell of 0.5m and onshore winds from the N. Better off going to the gym. "The wind is only 10km/h and the water temp is a nice 21C. Go for a paddle board.")
+    Hey Scott. The surf is pretty small with a swell of 0.5m and onshore winds from the N. Better off going to the gym. "The wind is only 10km/h and the water temp is a nice 21C. Go for a paddle board.
 
 **Input:** 
 
@@ -74,7 +74,7 @@ Hey Scott. The surf is pretty small with a swell of 0.5m and onshore winds from 
 
 **Input:**
 
-    Inputs are taken from the user and saved in an object save in the main.
+    Inputs are taken from the user and saved in an object in the main.
 
 **Output:**
 
