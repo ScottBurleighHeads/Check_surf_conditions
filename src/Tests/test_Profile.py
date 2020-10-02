@@ -6,6 +6,7 @@ from Profile_class import Profile
 class Test_Profile(unittest.TestCase):
     
     def setUp(self):
+        """Mock displayed below for inputs."""
         with patch("builtins.input") as input: 
             input.side_effect = ["scott malone","23/32/2332","sydney","yes"]
             self.test = Profile()
@@ -14,26 +15,26 @@ class Test_Profile(unittest.TestCase):
             self.test.save_profile
     #Testing names need to be the same as the test inputs.
     def test_set_up_profile_name_DOB(self):
-        
+        # Testing instance variables are not empty after initiation in setUp
         self.assertEqual(self.test.first_name != "", True)
         self.assertEqual(self.test.last_name != "", True)
         self.assertEqual(self.test.DOB != "", True)
-
+        # Changing values in instance variables
         self.test.first_name = "Fred"
         self.test.last_name = "Blogs"
         self.test.DOB = "12/23/3456"
-
+        # Testing the changes
         self.assertEqual(self.test.first_name,'Fred')
         self.assertEqual(self.test.last_name,'Blogs')
         self.assertEqual(self.test.DOB,"12/23/3456")
     
     def test_set_up_profile_address(self):
-        
+        # Testing inputs are not empty from the object
         self.assertEqual(self.test.city != "", True)
         self.assertEqual(self.test.coordinates != "", True)
 
     def test_save_profile(self):
-        
+        # opening the file and reading should return the layout printed.
         with open('profile.txt', 'r') as data_file:
                 txt = data_file.read()
         self.assertEqual(txt,f"Name  : {self.test.first_name} {self.test.last_name}\n"

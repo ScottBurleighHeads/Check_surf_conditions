@@ -26,7 +26,8 @@ class Surf():
         time_holder = 7
     
     def __init__(self,coordinates):
-        """ This method initiallises all method att"""
+        """ This method initiallises all instance variables and store API data directly into the variables
+            Coordinates are longitude and latitude taken from the object stored in main.py when setting up the profile"""
         url = f'http://api.worldweatheronline.com/premium/v1/marine.ashx?key=e76a15e1269541aab92105556202109&format=xml&q={coordinates}&tides=yes'
         response = requests.get(url)
         soup = BeautifulSoup(response.text,"html.parser")
@@ -56,12 +57,14 @@ class Surf():
 
     @property 
     def paddleBoard_str_entry(self):
+        """ This method is used as an AI feature that interacts with the user depending 
+            on the results it gets back from the api"""
         if float(self.wind_speed) < 20 and float(self.water_temp) > 20:
             self.word_paddle = f"The wind is only {self.wind_speed}km/h and the water temp is a nice {self.water_temp}C. Go for a paddle board."
         elif float(self.wind_speed) < 20 and float(self.water_temp) < 20:
             self.word_paddle = f"The wind is only {self.wind_speed}km/h but the water temp is a chilly {self.water_temp}C. Chuck a wetty on and go for a paddle board."
         elif float(self.wind_speed) >= 20:
-            self.word_paddle = f"Its a bit windy to go paddle boarding. The wind is {self.wind_speed}"
+            self.word_paddle = f"Its a bit windy to go paddle boarding. The wind is {self.wind_speed}km"
         return self.word_paddle
 
 

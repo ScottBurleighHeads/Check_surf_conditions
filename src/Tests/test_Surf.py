@@ -5,7 +5,6 @@ from Surf_class import Surf
 class Test_Surf(unittest.TestCase):
 
     @staticmethod
-
     def value_input(surf_size,wind_direction,wind_speed,water_temp):
         test = Surf("-26.5443222,153.0507705")
         test.surf_size = surf_size
@@ -25,7 +24,7 @@ class Test_Surf(unittest.TestCase):
 
     def test_paddleBoard_str_entry(self):
         self.assertEqual(Test_Surf.value_input(0.5,"W",10,21).paddleBoard_str_entry,"The wind is only 10km/h and the water temp is a nice 21C. Go for a paddle board.")
-        self.assertEqual(Test_Surf.value_input(1.5,"S",20,21).paddleBoard_str_entry,"Its a bit windy to go paddle boarding. The wind is 20")
+        self.assertEqual(Test_Surf.value_input(1.5,"S",20,21).paddleBoard_str_entry,"Its a bit windy to go paddle boarding. The wind is 20km")
         self.assertEqual(Test_Surf.value_input(1.5,"W",10,15).paddleBoard_str_entry,"The wind is only 10km/h but the water temp is a chilly 15C. "
                                                                                     "Chuck a wetty on and go for a paddle board.")
 

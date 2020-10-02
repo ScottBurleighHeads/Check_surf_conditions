@@ -2,24 +2,27 @@ from geopy.geocoders import Nominatim
 
 class Profile():
     def __init__(self):
+        
         self.first_name = None
         self.last_name = None
         self.DOB = None
         self.city = None
         self.coordinates = None
+    
     @property
     def set_up_profile_name_DOB(self):
-       
+        """ This method is used to store name and DOB in the instance variables. """
+
         name = input("Enter your first and last name: ").title()
         name_list = name.split(" ")
-       
+        # if,else used if user only types one name.
         if len(name_list) == 2:
             self.first_name = name_list[0]
             self.last_name = name_list[-1]
         else:
             self.first_name = name
             self.last_name = ""
-       
+        # While statement used to ensure that user is putting in correct format for DOB
         while True:
             self.DOB = input("Enter your D.O.B in the format xx/xx/xxxx: ")
             if len(self.DOB) == 10 and self.DOB[2] == "/" and self.DOB[5] =="/":
@@ -32,9 +35,11 @@ class Profile():
     
     @property
     def set_up_profile_address(self):
-
+        """geopy.geocoders is used to transform the city or suburb input into longitute 
+           and latitude coordinates so it can be used dynamically with the API"""
         solution = 0
         while solution != 'yes' or solution == '1': 
+            
             try:
                 self.city = input("Enter your address: ")
                 print("\n")
